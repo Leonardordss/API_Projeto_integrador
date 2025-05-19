@@ -1,9 +1,14 @@
 from fastapi import FastAPI, Request # importa as bibliotecas
 from pydantic import BaseModel
 import random
-
+from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI() # cria objeto app do tipo fastapi
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["POST", "GET"],
+    allow_headers=["*"],
+)
 bomba_estado = 0 # 0 desligada e 1 ligada
 temp_increment =2
 umid_increment =5
